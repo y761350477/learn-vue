@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <script src="../Resource/vue.min.js"></script>
+    <!-- 总结:
+            1. data中不声明dom中的变量是不能使用的;
+            2. v-if: true -> 显示, false -> 不显示;
+            3. v-on: 绑定事件, js中的onclick;
+            4. v-bind: 绑定属性, js中的attr;
+            5. v-model: 动态检测;
+            6. 绑定数据有两种基本方式: 一种写在标签体, 一种写在标签内;
+    -->
+</head>
+<body>
+
+<div id="r">
+    <!-- 绑定数据:
+            两种模版:
+                1. {{}}: 数据写在标签体
+                2. v-html: 数据写在标签内部
+    -->
+    <!-- 普通数据绑定格式一 -->
+    <h1>{{test1}}</h1>
+    <!-- 普通数据绑定格式返回方法 -->
+    <h1>{{testMethod()}}</h1>
+    <!-- 普通数据绑定格式二 -->
+    <h1 v-html="message"></h1>
+
+    <!-- 绑定属性数据:
+            v-bind指令
+     -->
+    <div v-bind:id="'list-' + id">v-bind指令绑定属性1</div>
+    <div v-bind:class="'list-' + testClass">v-bind指令绑定属性2</div>
+    <!-- 绑定属性数据的简写形式 -->
+    <div :id="'listPro-' + id">v-bind指令简写形式绑定属性1</div>
+    <div :class="'listPro-' + testClass">v-bind指令简写形式绑定属性2</div>
+
+
+    <!-- Vue-表达式的使用 -->
+    <div>{{5 + 5}}</div>
+    <div v-html="6 + 6"></div>
+    <div>{{ok ? 'YES' : 'NO'}}</div>
+    <div v-html="ok ? 'YES' : 'NO'"></div>
+
+    <!-- v-if的使用
+            true: 为可见;
+            false: 不可见;
+     -->
+    <p v-if="seen">你看到我了</p>
+    <p v-if="seen1">你看到我了1</p>
+
+    <!-- Vue-参数: 参数在指令后以冒号指明 -->
+    <!-- 注意: 使用超链接标签才能点击访问 -->
+    <a :href="testUrl">菜鸟教程</a>
+    <br>
+
+    <!-- v-model指令的使用 -->
+    <!-- 实现双向数据同步 -->
+    {{message}}
+    <br>
+    <input type="text" v-model="message">
+    <br>
+    <!-- 判断是否选中 -->
+    <!-- 注: 此方法不适用于button标签 -->
+    {{bt}}
+    <input type="checkbox" v-model="bt">
+    <br>
+
+    <!-- v-on 功能绑定 -->
+    <button v-on:click="testButton">button</button>
+    {{testButtonInfo}}
+    <br>
+    <!-- v-on 简写形式 -->
+    <button @click="testButton1">button1</button>
+    {{testButtonInfo}}
+
+</div>
+
+<!-- Vue-过滤器的使用 -->
+<div id="app">
+    {{message | capitalize}}
+</div>
+<script>
+    <!-- 注意: class不能作为自定义名称, id可以-->
+    new Vue({
+        el: '#r',
+        data: {
+            test1: 'test1的数据绑定',
+            message: 'v-html指令的使用',
+            id: 1,
+            testClass: 2,
+            ok: true,
+            seen: true,
+            seen1: false,
+            testUrl: 'http://www.runoob.com',
+            bt: false,
+            testButtonInfo: '我还没有被点击'
+        },
+        methods: {
+            testMethod: function () {
+                return this.test1 + "-testMethod()方法的绑定";
+            },
+            testButton: function () {
+                return this.testButtonInfo = '我被点击了!';
+            },
+            testButton1: function () {
+                return this.testButtonInfo = "我被点击了(简写形式)!"
+            }
+        }
+    });
+
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'runoob'
+        },
+        filters: {
+            capitalize: function (value) {
+                if (!value) return "";
+                value = value.toString();
+                return value.charAt(0).toUpperCase() + value.slice(1);
+            }
+        }
+    });
+</script>
+</body>
+</html>

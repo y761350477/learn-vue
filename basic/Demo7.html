@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue-参数</title>
+    <script src="../Resource/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <pre><a v-bind:href="url">菜鸟教程</a></pre>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            url: 'http://www.runoob.com'
+        }
+    })
+</script>
+</body>
+</html>
