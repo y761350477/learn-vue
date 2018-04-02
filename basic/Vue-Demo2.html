@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue-Demo2</title>
+    <script src="../Resource/vue.min.js"></script>
+</head>
+<body>
+<!-- Vue-循环的使用1 -->
+<div id="app">
+    <ol>
+        <li v-for="site in sites">{{site.name}}</li>
+    </ol>
+</div>
+
+<!-- Vue-循环的使用2 -->
+<div id="app1">
+    <ul>
+        <li v-for="value in object">
+            {{ value }}
+        </li>
+    </ul>
+</div>
+
+<!-- Vue-循环的使用3 -->
+<div id="app3">
+    <ul>
+        <li v-for="(value, key) in object">
+            {{ key }} : {{ value }}
+        </li>
+    </ul>
+</div>
+
+<!-- Vue-循环的使用4 -->
+<div id="app4">
+    <ul>
+        <li v-for="(value, key, index) in object">
+            {{ index }}. {{ key }} : {{ value }}
+        </li>
+    </ul>
+</div>
+
+<!-- Vue-循环的使用5 -->
+<div id="app5">
+    <ul>
+        <li v-for="n in 10">
+            {{ n }}
+        </li>
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el: '#app5'
+    })
+</script>
+
+<script>
+    new Vue({
+        el: '#app4',
+        data: {
+            object: {
+                name: '菜鸟教程',
+                url: 'http://www.runoob.com',
+                slogan: '学的不仅是技术，更是梦想！'
+            }
+        }
+    })
+</script>
+
+<script>
+    new Vue({
+        el: '#app3',
+        data: {
+            object: {
+                name: '菜鸟教程',
+                url: 'http://www.runoob.com',
+                slogan: '学的不仅是技术，更是梦想！'
+            }
+        }
+    })
+</script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            sites: [
+                {name: 'Runoob'},
+                {name: 'Google'},
+                {name: 'Taobao'}
+            ]
+        }
+    });
+
+    new Vue({
+        el: '#app1',
+        data: {
+            object: {
+                name: '菜鸟教程',
+                url: 'http://www.runoob.com',
+                slogan: '学的不仅是技术，更是梦想！'
+            }
+        }
+    })
+</script>
+</body>
+</html>
