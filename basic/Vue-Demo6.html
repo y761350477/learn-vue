@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue_demo6</title>
+    <script src="../Resource/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <button @click="bt1('button1')">Button1</button>
+    <button @click="bt2('button2')">Button2</button>
+</div>
+
+<div id="app1">
+    <button @click="num += 1">Click</button>
+    被点击了{{num}}次
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        methods: {
+            bt1: function (param) {
+                alert(param);
+            },
+            bt2: function (param) {
+                alert(param);
+            }
+        }
+    });
+    new Vue({
+        el: '#app1',
+        data: {
+            num: 0
+        }
+    })
+</script>
+</body>
+</html>
