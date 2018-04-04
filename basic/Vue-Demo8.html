@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>加载页面时mounted()方法的使用</title>
+    <script src="../Resource/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <input v-model='test1' type="text">
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                test1: '输入信息'
+            },
+            mounted() {
+                this.test1 = '初始化加载信息';
+            }
+        });
+    </script>
+</div>
+</body>
+</html>
