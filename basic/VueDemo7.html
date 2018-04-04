@@ -1,0 +1,47 @@
+<!--
+Vue的data的两种写法
+    1. data: {}; 注意: v-model值只能是单个属性的, 对于.属性的情况要使用第2种方式;
+    2. data() {return{}};
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <script src="../Resource/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <input v-model="form.test1"><br>
+    <input v-model="form.test2">
+</div>
+
+<div id="app1">
+    <input v-model="test1"><br>
+    <input v-model="test2">
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                form: {
+                    test1: 'JustTest1',
+                    test2: 'JustTest2'
+                }
+            }
+        }
+    });
+
+    new Vue({
+        el: '#app1',
+        data: {
+            test1: 'Test1',
+            test2: 'Test2'
+        }
+    })
+</script>
+
+</body>
+</html>
