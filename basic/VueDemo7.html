@@ -1,6 +1,6 @@
 <!--
 Vue的data的两种写法
-    1. data: {}; 注意: v-model值只能是单个属性的, 对于.属性的情况要使用第2种方式;
+    1. data: {};
     2. data() {return{}};
 -->
 <!DOCTYPE html>
@@ -17,8 +17,8 @@ Vue的data的两种写法
 </div>
 
 <div id="app1">
-    <input v-model="test1"><br>
-    <input v-model="test2">
+    <input v-model="form1.test1"><br>
+    <input v-model="form1.test2">
 </div>
 
 <script>
@@ -37,8 +37,10 @@ Vue的data的两种写法
     new Vue({
         el: '#app1',
         data: {
-            test1: 'Test1',
-            test2: 'Test2'
+            form1: {
+                test1: 'Test1',
+                test2: 'Test2'
+            }
         }
     })
 </script>
